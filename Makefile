@@ -8,6 +8,9 @@ build:
 up: down build
 	docker compose up -d
 
+test:
+	@cd backend && $(MAKE) test
+
 down:
 	docker compose down
 

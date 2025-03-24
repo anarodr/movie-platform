@@ -18,6 +18,9 @@ run: setup
 lint:
 	@$(VENV_DIR)/bin/flake8 .
 
+test:
+	@export PYTHONPATH=$(PWD) && $(VENV_DIR)/bin/pytest
+	
 # Format code
 fmt:
 	@$(VENV_DIR)/bin/black .
