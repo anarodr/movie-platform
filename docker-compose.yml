@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest # MongoDB image
+    container_name: movie-platform-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+      - MONGO_INITDB_DATABASE=movieplatformdb
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - movie-platform-net
+
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    container_name: movie-platform-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1 # Ensures Python output is not buffered, useful for real-time logs
+    depends_on:
+      - mongodb
+    networks:
+      - movie-platform-net
+
+volumes:
+  mongodb-data:
+
+networks:
+  movie-platform-net:
+    driver: bridge
