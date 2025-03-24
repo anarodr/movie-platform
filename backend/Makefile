@@ -54,13 +54,4 @@ clean:
 	@find . -type d -name '.mypy_cache' -exec rm -rf {} +
 	@echo "Cleanup completed"
 
-help:
-	@echo "Available commands:"
-	@echo "  make setup               - Create virtual environment and install dependencies"
-	@echo "  make run                 - Run the full platform (FE + BE)"
-	@echo "  make clean               - Remove virtual environment and caches"
-	@echo "  make pip-install         - To install python libraries. Ex: make pip.install packages=\"fastapi uvicorn\""
-	@echo "  make build               - Obfuscate the code creatin a C binary"
-	@echo "  make remove-source-code  - Only executed at docker build step for security reasons"
-
-.PHONY: setup run image pip-install clean help
+.PHONY: setup run pip-install clean help fmt test lint type-check security-check dependency-check

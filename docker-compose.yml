@@ -22,8 +22,22 @@ services:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1 # Ensures Python output is not buffered, useful for real-time logs
+      - MONGODB_URL=mongodb://root:rootpassword@mongodb:27017
+      - MONGODB_DB_NAME=movieplatformdb?authSource=admin
     depends_on:
       - mongodb
+    networks:
+      - movie-platform-net
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: movie-platform-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
     networks:
       - movie-platform-net
 

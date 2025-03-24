@@ -1,22 +1,26 @@
 import pytest
+import os
 from pymongo import MongoClient
 from movies.domain.movie import Movie
 from movies.domain.value_objects.movie_name import MovieName
 from shared.domain.value_objects.id import ID
 from movies.infrastructure.mongodb_movie_repository import MongoMovieRepository
 
+db_url = os.getenv("MONGODB_URL", "mongodb://root:rootpassword@mongodb:27017")
+db_name = os.getenv("MONGODB_DB_NAME", "movieplatformdb?authSource=admin")
+
 
 @pytest.fixture(scope="module")
 def mongo_client():
-    client = MongoClient("mongodb://root:rootpassword@localhost:27017/")
+    client = MongoClient(db_url)
     return client
 
 
 @pytest.fixture(scope="module")
 def mongo_repo(mongo_client):
     repo = MongoMovieRepository(
-        db_url="mongodb://root:rootpassword@localhost:27017/",
-        db_name="movieplatformdb",
+        db_url=db_url,
+        db_name=db_name,
         collection_name="movies"
     )
     return repo

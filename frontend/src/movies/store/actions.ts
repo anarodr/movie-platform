@@ -58,15 +58,14 @@ export const deleteOneMovie = createAsyncThunk<Movie, string, { rejectValue: str
     },
 )
 
-export const updateMovie = createAsyncThunk<
-    Movie,
-    { id: string; movie: Movie },
-    { rejectValue: string }
->(MOVIE_UPDATE.name, async ({ id, movie }, { rejectWithValue }) => {
-    try {
-        const movieUpdated = (await MovieService.update(id, movie)).data
-        return movieUpdated
-    } catch (err) {
-        return rejectWithValue(err as string)
-    }
-})
+export const updateMovie = createAsyncThunk<Movie, { movie: Movie }, { rejectValue: string }>(
+    MOVIE_UPDATE.name,
+    async ({ movie }, { rejectWithValue }) => {
+        try {
+            const movieUpdated = (await MovieService.update(movie)).data
+            return movieUpdated
+        } catch (err) {
+            return rejectWithValue(err as string)
+        }
+    },
+)

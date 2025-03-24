@@ -12,7 +12,7 @@ export const MovieService = {
     create: (movie: Movie): Promise<AxiosResponse<Movie>> =>
         apiClient.post('/movies', movie) as Promise<AxiosResponse<Movie>>,
 
-    update: (id: string, movie: Movie): Promise<AxiosResponse<Movie>> =>
+    update: (movie: Movie): Promise<AxiosResponse<Movie>> =>
         apiClient.put(`/movies/`, movie) as Promise<AxiosResponse<Movie>>,
 
     getOne: (id: string): Promise<AxiosResponse<Movie>> =>

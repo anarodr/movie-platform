@@ -23,7 +23,7 @@ export default function EditMovie() {
 
     async function onSubmitMovie(values: Movie, { setSubmitting }: FormikHelpers<Movie>) {
         if (id) {
-            const submittedResult = await dispatch(updateMovie({ id, movie: values }))
+            const submittedResult = await dispatch(updateMovie({ movie: values }))
             setSubmitting(false)
 
             if (updateMovie.fulfilled.match(submittedResult)) {
