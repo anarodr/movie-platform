@@ -20,7 +20,7 @@ This is a Full Stack project that consists of developing a movie platform where 
 
 ### Backend
 
-- **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on the OpenAPI standard.
+- **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.10.12+ based on the OpenAPI standard.
 - **Python**: Programming language used for the backend.
 - **Database:** MongoDB
 - **Deployment:** Docker
@@ -177,9 +177,11 @@ This testing strategy ensures **high code reliability**, **prevents regressions*
 
 ### System Requirements
 
-- Node.js >= 20.0.0 (for the React frontend)
-- Python >= 3.7 (for the FastAPI backend)
-- Pip (Python package manager)
+- docker compose v2.18.1
+- Docker 24.0.2
+- Node.js >= 20.0.0 (optional for the React frontend)
+- Python >= 3.10.12 (optional for the FastAPI backend)
+- Pip (optional Python package manager)
 - Virtualenv (optional, for creating virtual environments in Python)
 
 ### Local Installation
@@ -211,4 +213,17 @@ This testing strategy ensures **high code reliability**, **prevents regressions*
 
    ```bash
    npm run test
+   ```
+
+#### Backend (Python + FastAPI)
+
+1. Launch tests:
+
+   ```bash
+   cd backend
+   make setup
+   cd ..
+   make up
+   (wait till server is up)
+   make test
    ```
