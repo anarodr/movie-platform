@@ -66,7 +66,7 @@ export default function Movies() {
                                 <SearchInput
                                     initialValue=''
                                     searchHandler={value => updateParam('year', value)}
-                                    placeholder='1990, 1991, 1992...'
+                                    placeholder='Exact year match e.g 1990'
                                     type='number'
                                     label='Year'
                                 />
@@ -75,7 +75,7 @@ export default function Movies() {
                                 <SearchInput
                                     initialValue=''
                                     searchHandler={value => updateParam('averageRating', value)}
-                                    placeholder='1, 2, 3, 4, 5'
+                                    placeholder='Exact rate match e.g 1'
                                     type='number'
                                     label='Rating'
                                 />
