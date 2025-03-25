@@ -6,22 +6,22 @@ from movies.domain.value_objects.movie_name import MovieName
 from shared.domain.value_objects.id import ID
 from movies.infrastructure.mongodb_movie_repository import MongoMovieRepository
 
-db_url = os.getenv("MONGODB_URL", "mongodb://root:rootpassword@mongodb:27017")
-db_name = os.getenv("MONGODB_DB_NAME", "movieplatformdb?authSource=admin")
+db_url_testing = os.getenv(
+    "MONGODB_URL_FOR_TESTING", "mongodb://root:rootpassword@localhost:27017/"
+)
+db_name_testing = os.getenv("MONGODB_DB_NAME_FOR_TESTING", "movieplatformdb")
 
 
 @pytest.fixture(scope="module")
 def mongo_client():
-    client = MongoClient(db_url)
+    client = MongoClient(db_url_testing)
     return client
 
 
 @pytest.fixture(scope="module")
 def mongo_repo(mongo_client):
     repo = MongoMovieRepository(
-        db_url=db_url,
-        db_name=db_name,
-        collection_name="movies"
+        db_url=db_url_testing, db_name=db_name_testing, collection_name="movies"
     )
     return repo
 
@@ -41,7 +41,7 @@ def test_save_movie(mongo_repo):
         "Inception",
         "Christopher Nolan",
         2010,
-        4
+        4,
     )
 
     # Act
@@ -75,7 +75,7 @@ def test_find_movie_by_id_found(mongo_repo):
         "Inception",
         "Christopher Nolan",
         2010,
-        3
+        3,
     )
     mongo_repo.save(movie)
 
@@ -94,21 +94,21 @@ def test_find_all_movies_with_filter(mongo_repo):
         "Inception",
         "Christopher Nolan",
         2010,
-        2
+        2,
     )
     movie2 = Movie.create(
         "2d59c0de-cb8a-4043-bd9f-b053e1db5029",
         "Interstellar",
         "Christopher Nolan",
         2014,
-        1
+        1,
     )
     movie3 = Movie.create(
         "3e98f897-b52d-4a4a-a93f-96a731f356dd",
         "The Prestige",
         "Christopher Nolan",
         2006,
-        4
+        4,
     )
     mongo_repo.save(movie1)
     mongo_repo.save(movie2)
@@ -129,7 +129,7 @@ def test_delete_movie(mongo_repo):
         "Inception",
         "Christopher Nolan",
         2010,
-        5
+        5,
     )
     mongo_repo.save(movie)
 
@@ -148,14 +148,14 @@ def test_count_movies(mongo_repo):
         "Inception",
         "Christopher Nolan",
         2010,
-        4
+        4,
     )
     movie2 = Movie.create(
         "2d59c0de-cb8a-4043-bd9f-b053e1db5029",
         "Interstellar",
         "Christopher Nolan",
         2014,
-        5
+        5,
     )
     mongo_repo.save(movie1)
     mongo_repo.save(movie2)

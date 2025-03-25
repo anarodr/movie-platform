@@ -8,6 +8,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=rootpassword
       - MONGO_INITDB_DATABASE=movieplatformdb
+    ports:
+      - "27017:27017"
     volumes:
       - mongodb-data:/data/db
     networks:
@@ -24,6 +26,8 @@ services:
       - PYTHONUNBUFFERED=1 # Ensures Python output is not buffered, useful for real-time logs
       - MONGODB_URL=mongodb://root:rootpassword@mongodb:27017
       - MONGODB_DB_NAME=movieplatformdb?authSource=admin
+      - MONGODB_URL_FOR_TESTING=mongodb://root:rootpassword@localhost:27017/
+      - MONGODB_DB_NAME_FOR_TESTING=movieplatformdb
     depends_on:
       - mongodb
     networks:
