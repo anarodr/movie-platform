@@ -40,7 +40,7 @@ export default function MoviesList({ movies }: MoviesListProps) {
                     ))}
                 </div>
             ) : (
-                <div className='flex items-center justify-center min-h-[calc(100vh-300px)] text-lg'>
+                <div className='flex items-center text-white justify-center min-h-[calc(100vh-300px)] text-3xl'>
                     No movies were found
                 </div>
             )}

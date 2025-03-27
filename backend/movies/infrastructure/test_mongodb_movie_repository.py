@@ -5,9 +5,7 @@ from movies.domain.movie import Movie
 from shared.domain.value_objects.id import ID
 from movies.infrastructure.mongodb_movie_repository import MongoMovieRepository
 
-db_url_testing = os.getenv(
-    "MONGODB_URL_FOR_TESTING", "mongodb://root:rootpassword@localhost:27017/"
-)
+db_url_testing = os.getenv("MONGODB_URL", "mongodb://root:rootpassword@mongodb:27017/")
 db_name_testing = os.getenv("MONGODB_DB_NAME_FOR_TESTING", "movieplatformdb")
 
 

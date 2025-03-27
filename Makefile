@@ -3,7 +3,7 @@
 all: up
 
 build:
-	@docker compose build 
+	@docker compose build
 
 up: down build
 	@docker compose up -d
@@ -11,10 +11,8 @@ up: down build
 down:
 	@docker compose down
 
-test:
-	@echo WARN: make build up is necessary before executing this command.
-	@cd backend && $(MAKE) test
-	@cd frontend && npm run test
+test: up
+	@docker compose exec -T backend bash -c "/usr/local/bin/wait-for-it.sh backend:8000 -- make test PWD=/backend"
 
 clean:
 	$(MAKE) -C backend clean

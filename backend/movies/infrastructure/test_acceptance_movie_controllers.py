@@ -1,7 +1,8 @@
+import os
 import pytest
 import httpx
 
-BASE_URL = "http://localhost:8000/movies"
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000/movies")
 
 
 @pytest.mark.asyncio

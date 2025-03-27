@@ -87,7 +87,8 @@ When the user lands on the **Home Page**, they can select and click to search fo
 - Initially, all movies are retrieved and displayed.
 - The user can use search fields to filter results:
   - **Name & Director**: Perform partial (non-exact) searches.
-  - **Year & Rating**: Require exact numerical values for filtering.
+  - **Year Range (From - To)**: Allows filtering movies within a specific year range.
+  - **Rating Range (From - To)**: Filters movies based on a rating range.
 - There is a button to **Create a New Movie**, which redirects the user to the **Movie Creation Form**.
 
 ### Movie Creation Form
@@ -159,6 +160,14 @@ This approach makes the system more **adaptable, testable, and future-proof**, a
 
 The project uses **pytest** for testing at both the **application level (unit tests)** and the **infrastructure level (integration tests)**.
 
+### Command
+
+This will execute the tests inside the docker container.
+
+```bash
+make test
+```
+
 ### 🔹 Unit Testing (Application Layer)
 
 - Unit tests focus on **business logic** without dependencies on external systems.
@@ -220,10 +229,5 @@ This testing strategy ensures **high code reliability**, **prevents regressions*
 1. Launch tests:
 
    ```bash
-   cd backend
-   make setup
-   cd ..
-   make up
-   (wait till server is up)
    make test
    ```
