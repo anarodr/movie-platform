@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-type UpdateParam<T> = <K extends keyof T>(key: K, value: T[K] | '') => void
+export type UpdateParam<T> = <K extends keyof T>(key: K, value: T[K] | '') => void
 
 function useSearchFilters<T>(initialParams: T) {
     const [params, setParams] = useState<T>(initialParams)
