@@ -34,7 +34,7 @@ export default function CreateMovie() {
     }
 
     return (
-        <>
+        <div className='py-3 px-5'>
             <Button.Secondary>
                 <Link to='/movies'>
                     <span>{'< '}</span>
@@ -45,6 +45,6 @@ export default function CreateMovie() {
                 submitHandler={onSubmitMovie}
                 initialValues={{ id: '', name: '', director: '', year: 2024, averageRating: 1 }}
             />
-        </>
+        </div>
     )
 }

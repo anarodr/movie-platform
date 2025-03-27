@@ -29,10 +29,22 @@ export default function Button({
     let styles
     switch (type) {
         case ButtonType.PRIMARY:
-            styles = `${!disabled ? 'bg-pink-500 hover:bg-pink-700' : 'bg-pink-200'} text-white px-4 py-2 rounded `
+            if (disabled) {
+                styles =
+                    'bg-green-100  text-white shadow-[0_0_0_0_#21ad67] px-6 py-4 border-0 rounded-full text-base font-semibold'
+            } else {
+                styles =
+                    'bg-[#21ad67] text-white shadow-[0_0_0_0_#21ad67] px-6 py-4 border-0 rounded-full text-base font-semibold transition-all duration-500 ease-in-out hover:shadow-[0_4px_20px_0_#21ad67] hover:translate-y-[3px] hover:duration-100'
+            }
             break
         case ButtonType.SECONDARY:
-            styles = 'px-4 py-2 text-pink-500 font-semibold hover:bg-pink-50 rounded-md'
+            styles =
+                'px-4 py-2 text-white tracking-wider font-semibold hover:bg-yellow-200 rounded-md'
+
+            break
+        case ButtonType.INVERTED:
+            styles =
+                'px-4 py-2 text-gray-500 tracking-wider font-semibold hover:bg-gray-200 rounded-md'
 
             break
         case ButtonType.DANGER:
@@ -55,7 +67,9 @@ export default function Button({
 const ButtonPrimary = (props: ButtonProps) => <Button {...props} type={ButtonType.PRIMARY} />
 const ButtonDanger = (props: ButtonProps) => <Button {...props} type={ButtonType.DANGER} />
 const ButtonSecondary = (props: ButtonProps) => <Button {...props} type={ButtonType.SECONDARY} />
+const ButtonInverted = (props: ButtonProps) => <Button {...props} type={ButtonType.INVERTED} />
 
 Button.Primary = ButtonPrimary
 Button.Secondary = ButtonSecondary
 Button.Danger = ButtonDanger
+Button.Inverted = ButtonInverted

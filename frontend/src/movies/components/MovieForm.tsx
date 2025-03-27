@@ -12,7 +12,7 @@ interface MovieFormProps {
 
 export default function MovieForm({ submitHandler, initialValues }: MovieFormProps) {
     return (
-        <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white p-5 sm:p-10'>
+        <div className='mt-10 rounded sm:mx-auto sm:w-full sm:max-w-sm bg-white p-5 sm:p-10'>
             <Formik<Movie>
                 enableReinitialize={true}
                 initialValues={initialValues}
@@ -52,7 +52,7 @@ MovieForm.schema = Yup.object().shape({
         .max(64, 'Name must be shorter than 64 characters')
         .test(
             'deny-white-characters',
-            'Site Name must not start or end with spaces or tabs',
+            'Name must not start or end with spaces or tabs',
             (value: string | undefined) => !DENY_WHITE_CHARACTERS.test(value as string),
         )
         .required('Name is required'),

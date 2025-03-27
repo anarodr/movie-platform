@@ -27,15 +27,24 @@ export default function Movies() {
 
     return (
         <>
-            <div className='my-3'>
-                <div className='flex justify-between'>
-                    <h1 className='text-3xl'>Movies List</h1>
+            <div className='mx-5 my-4'>
+                <div className='flex flex-col justify-center items-center'>
+                    <div className=''>
+                        <h1 className='w-max text-5xl tracking-wide mb-8 bg-gradient-to-r from-[#0075ba] via-green-500 to-[#fae282] bg-clip-text text-transparent'>
+                            Movies List
+                        </h1>
+                    </div>
                     <Button.Primary>
                         <Link to='/movies/new'>Add movie</Link>
                     </Button.Primary>
                 </div>
 
-                <div className='flex lg:w-1/2 md:w-3/5 w-full my-2 justify-between'>
+                <div className=''>
+                    <Button.Secondary onClick={onShowFilter}>
+                        {!showFilter ? 'MORE FILTERS' : 'LESS FILTERS'}
+                    </Button.Secondary>
+                </div>
+                <div className='flex lg:w-1/2 md:w-4/5 w-full my-5 gap-2 justify-between'>
                     <div className='w-full'>
                         <SearchInput
                             initialValue={moviesParams.name}
@@ -44,16 +53,11 @@ export default function Movies() {
                             label='Name'
                         />
                     </div>
-                    <div className='w-1/4'>
-                        <Button.Secondary onClick={onShowFilter}>
-                            {!showFilter ? 'More filters' : 'Less filters'}
-                        </Button.Secondary>
-                    </div>
                 </div>
 
                 {showFilter ? (
                     <>
-                        <div className='flex flex-col lg:w-1/2 md:w-3/5 w-full space-y-3 items-center'>
+                        <div className='flex flex-col lg:w-1/2 md:w-4/5 w-full space-y-3 items-center'>
                             <div className='w-full'>
                                 <SearchInput
                                     initialValue={moviesParams.director}
@@ -83,10 +87,10 @@ export default function Movies() {
                         </div>
                     </>
                 ) : null}
-            </div>
-            <div className='relative'>
-                {loading ? <Loader /> : null}
-                <MoviesList movies={resources} />
+                <div className='relative mt-4'>
+                    {loading ? <Loader /> : null}
+                    <MoviesList movies={resources} />
+                </div>
             </div>
         </>
     )

@@ -16,15 +16,12 @@ function App() {
             <ToastContainer />
             <Provider store={store}>
                 <BrowserRouter>
-                    <Header />
-                    <div className='m-4'>
-                        <Routes>
-                            <Route path='/' element={<Home />} />
-                            <Route path='/movies' element={<Movies />} />
-                            <Route path='/movies/new' element={<CreateMovie />} />
-                            <Route path='/movies/:id/edit' element={<EditMovie />} />
-                        </Routes>
-                    </div>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/movies' element={<Movies />} />
+                        <Route path='/movies/new' element={<CreateMovie />} />
+                        <Route path='/movies/:id/edit' element={<EditMovie />} />
+                    </Routes>
                 </BrowserRouter>
             </Provider>
         </>
