@@ -2,7 +2,6 @@ import pytest
 import os
 from pymongo import MongoClient
 from movies.domain.movie import Movie
-from movies.domain.value_objects.movie_name import MovieName
 from shared.domain.value_objects.id import ID
 from movies.infrastructure.mongodb_movie_repository import MongoMovieRepository
 
@@ -115,7 +114,7 @@ def test_find_all_movies_with_filter(mongo_repo):
     mongo_repo.save(movie3)
 
     # Act
-    filtered_movies = mongo_repo.find_all(name=MovieName.create("Inception"))
+    filtered_movies = mongo_repo.find_all(name="Inception")
 
     # Assert
     assert len(filtered_movies) == 1
