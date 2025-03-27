@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
 import Movies from './movies/containers/Movies'
-import Header from './shared/components/Header'
 import CreateMovie from './movies/containers/CreateMovie'
 import { Provider } from 'react-redux'
 import { store } from './store'

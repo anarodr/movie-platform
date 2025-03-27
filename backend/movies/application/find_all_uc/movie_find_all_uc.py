@@ -1,9 +1,5 @@
 from movies.domain.movie_repository import MovieRepository
-from movies.domain.value_objects.movie_name import MovieName
-from movies.domain.value_objects.movie_director import MovieDirector
-from movies.domain.value_objects.movie_year import MovieYear
 from movies.application.movie_response import MovieResponse
-from movies.domain.value_objects.movie_average_rating import MovieAverageRating
 from typing import List
 from movies.application.find_all_uc.movie_find_all_request import MovieFindAllRequest
 
@@ -17,21 +13,16 @@ class MovieFindAllUC:
         request: MovieFindAllRequest,
     ) -> List[MovieResponse]:
 
-        # Validate inputs
-        name = MovieName.create(value=request.name) if request.name else None
-        director = (
-            MovieDirector.create(value=request.director) if request.director else None
-        )
-        year = MovieYear.create(value=request.year) if request.year else None
-        averageRating = (
-            MovieAverageRating.create(value=request.averageRating)
-            if request.averageRating
-            else None
-        )
-
         # Query into database
         movies = self.repository.find_all(
-            name=name, director=director, year=year, averageRating=averageRating
+            name=request.name,
+            director=request.director,
+            year=request.year,
+            averageRating=request.averageRating,
+            fromYear=request.fromYear,
+            toYear=request.toYear,
+            fromAverageRating=request.fromAverageRating,
+            toAverageRating=request.toAverageRating,
         )
 
         return [MovieResponse.from_movie(movie) for movie in movies]

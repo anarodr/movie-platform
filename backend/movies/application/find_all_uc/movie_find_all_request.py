@@ -7,3 +7,7 @@ class MovieFindAllRequest(BaseModel):
     director: Optional[str] = None
     year: Optional[int] = None
     averageRating: Optional[int] = None
+    fromYear: Optional[int] = None
+    toYear: Optional[int] = None
+    fromAverageRating: Optional[int] = None
+    toAverageRating: Optional[int] = None

@@ -48,22 +48,40 @@ export default function MovieListFilters({
                                 label='Director'
                             />
                         </div>
-                        <div className='w-full'>
+                        <div className='grid grid-cols-2 w-full gap-2'>
                             <SearchInput
-                                initialValue={filterParams.year}
-                                searchHandler={value => updateParamHandler('year', value)}
-                                placeholder='Exact year match e.g 1990'
+                                initialValue={filterParams.fromYear}
+                                searchHandler={value => updateParamHandler('fromYear', value)}
+                                placeholder='1800'
                                 type='number'
-                                label='Year'
+                                label='From year'
+                            />
+                            <SearchInput
+                                initialValue={filterParams.toYear}
+                                searchHandler={value => updateParamHandler('toYear', value)}
+                                placeholder='2030'
+                                type='number'
+                                label='To year'
                             />
                         </div>
-                        <div className='w-full'>
+                        <div className='grid grid-cols-2 w-full gap-2'>
                             <SearchInput
-                                initialValue={filterParams.averageRating}
-                                searchHandler={value => updateParamHandler('averageRating', value)}
-                                placeholder='Exact rate match e.g 1'
+                                initialValue={filterParams.fromAverageRating}
+                                searchHandler={value =>
+                                    updateParamHandler('fromAverageRating', value)
+                                }
+                                placeholder='1'
                                 type='number'
-                                label='Rating'
+                                label='From Rating'
+                            />
+                            <SearchInput
+                                initialValue={filterParams.toAverageRating}
+                                searchHandler={value =>
+                                    updateParamHandler('toAverageRating', value)
+                                }
+                                placeholder='5'
+                                type='number'
+                                label='To rating'
                             />
                         </div>
                     </div>

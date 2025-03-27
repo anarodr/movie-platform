@@ -16,6 +16,14 @@ def invoke(
     director: Optional[str] = Query(None, description="Filter by director"),
     year: Optional[int] = Query(None, description="Filter by year"),
     averageRating: Optional[int] = Query(None, description="Filter by Average Rating"),
+    fromYear: Optional[int] = Query(None, description="Filter from year"),
+    toYear: Optional[int] = Query(None, description="Filter to year"),
+    fromAverageRating: Optional[int] = Query(
+        None, description="Filter from average rating"
+    ),
+    toAverageRating: Optional[int] = Query(
+        None, description="Filter to average rating"
+    ),
     movie_repo: MovieRepository = Depends(get_movie_repo),
 ):
     return MovieFindAllUC(movie_repo).invoke(
@@ -24,5 +32,9 @@ def invoke(
             director=director,
             year=year,
             averageRating=averageRating,
+            fromYear=fromYear,
+            toYear=toYear,
+            fromAverageRating=fromAverageRating,
+            toAverageRating=toAverageRating,
         )
     )

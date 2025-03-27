@@ -1,10 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 from movies.domain.movie import Movie
-from movies.domain.value_objects.movie_name import MovieName
-from movies.domain.value_objects.movie_director import MovieDirector
-from movies.domain.value_objects.movie_year import MovieYear
-from movies.domain.value_objects.movie_average_rating import MovieAverageRating
 from shared.domain.value_objects.id import ID
 
 
@@ -12,10 +8,14 @@ class MovieRepository(ABC):
     @abstractmethod
     def find_all(
         self,
-        name: Optional[MovieName] = None,
-        director: Optional[MovieDirector] = None,
-        year: Optional[MovieYear] = None,
-        averageRating: Optional[MovieAverageRating] = None,
+        name: Optional[str] = None,
+        director: Optional[str] = None,
+        year: Optional[int] = None,
+        averageRating: Optional[int] = None,
+        fromYear: Optional[int] = None,
+        toYear: Optional[int] = None,
+        fromAverageRating: Optional[int] = None,
+        toAverageRating: Optional[int] = None,
     ) -> List[Movie]:
         pass
 

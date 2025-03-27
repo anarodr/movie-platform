@@ -17,30 +17,52 @@ class MongoMovieRepository(MovieRepository):
 
     def find_all(
         self,
-        name: Optional[MovieName] = None,
-        director: Optional[MovieDirector] = None,
-        year: Optional[MovieYear] = None,
-        averageRating: Optional[MovieAverageRating] = None,
+        name: Optional[str] = None,
+        director: Optional[str] = None,
+        year: Optional[int] = None,
+        averageRating: Optional[int] = None,
+        fromYear: Optional[int] = None,
+        toYear: Optional[int] = None,
+        fromAverageRating: Optional[int] = None,
+        toAverageRating: Optional[int] = None,
     ) -> List[Movie]:
-        # Define the filter as a dictionary that can hold both str and int
-        filters: Dict[str, Union[Dict[str, str], int]] = {}
+        filters: Dict[str, Union[Dict[str, str], Dict[str, int], int]] = {}
 
         if name:
             filters["name"] = {
-                "$regex": name.value,
+                "$regex": name,
                 "$options": "i",
             }  # Case-insensitive search
         if director:
             filters["director"] = {
-                "$regex": director.value,
+                "$regex": director,
                 "$options": "i",
             }  # Case-insensitive search
         if year:
-            filters["year"] = year.value
-        if averageRating:
-            filters["averageRating"] = averageRating.value
+            filters["year"] = year
+        else:
+            if fromYear and toYear:
+                filters["year"] = {"$gte": fromYear, "$lte": toYear}
+            else:
+                if fromYear:
+                    filters["year"] = {"$gte": fromYear}
+                if toYear:
+                    filters["year"] = {"$lte": toYear}
 
-        # Query the database with the filters
+        if averageRating:
+            filters["averageRating"] = averageRating
+        else:
+            if fromAverageRating and toAverageRating:
+                filters["averageRating"] = {
+                    "$gte": fromAverageRating,
+                    "$lte": toAverageRating,
+                }
+            else:
+                if toAverageRating:
+                    filters["averageRating"] = {"$lte": toAverageRating}
+                if fromAverageRating:
+                    filters["averageRating"] = {"$gte": fromAverageRating}
+
         movies_cursor = self.collection.find(filters)
         return [self.from_mongo(movie) for movie in movies_cursor]
 
