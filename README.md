@@ -162,7 +162,7 @@ The project uses **pytest** for testing at both the **application level (unit te
 
 ### Command
 
-This will execute the tests inside the docker container.
+This from parent folder will execute the tests for both backend and frontend inside the docker container.
 
 ```bash
 make test
@@ -178,7 +178,7 @@ make test
 
 - **Database (MongoDB)**: Tests validate repository implementations and database interactions to ensure data consistency.
 - **Controllers (FastAPI Endpoints)**: API integration tests verify request/response behavior, status codes, and input validation.
-- Uses **TestClient from FastAPI** to simulate API requests and **a test MongoDB instance** to avoid modifying real data.
+- Uses **TestClient from FastAPI** to simulate API requests and **a MongoDB instance** to avoid modifying real data.
 
 This testing strategy ensures **high code reliability**, **prevents regressions**, and keeps the system **robust and scalable**.
 
@@ -222,12 +222,4 @@ This testing strategy ensures **high code reliability**, **prevents regressions*
 
    ```bash
    npm run test
-   ```
-
-#### Backend (Python + FastAPI)
-
-1. Launch tests:
-
-   ```bash
-   make test
    ```
