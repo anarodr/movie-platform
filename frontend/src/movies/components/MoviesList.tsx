@@ -15,13 +15,20 @@ export default function MoviesList({ movies }: MoviesListProps) {
             {movies.length > 0 ? (
                 <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 text-center gap-4 mb-4 md:mb-6'>
                     {movies.map(m => (
-                        <Card key={m.id}>
-                            <p className='text-xl font-bold'>{m.name}</p>
-                            <h3 className='text-gray-500'>{m.director}</h3>
-                            <h3 className='text-gray-500'>{m.year}</h3>
-                            <StarRating rating={m.averageRating} />
-
-                            <div className='grid grid-cols-2'>
+                        <Card>
+                            <div className='flex flex-col'>
+                                <h1 className='max-w-full break-words overflow-hidden text-ellipsis text-lg mb-2'>
+                                    {m.name}
+                                </h1>
+                                <p className='text-base font-light leading-[1.5] italic'>
+                                    {m.director}
+                                </p>
+                                <p>{m.year}</p>
+                            </div>
+                            <div>
+                                <StarRating rating={m.averageRating} />
+                            </div>
+                            <div className='grid grid-cols-2 space-x-2'>
                                 <div className='block w-full'>
                                     <Link className='grid' to={`/movies/${m.id}/edit`}>
                                         <Button.Secondary>EDIT</Button.Secondary>

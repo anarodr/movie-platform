@@ -6,7 +6,7 @@ interface CardProps {
 
 export default function Card({ children }: CardProps) {
     return (
-        <div className='flex flex-col content-between group pt-4 px-4 p-2 bg-white border border-gray-200 shadow-2xs overflow-hidden hover:shadow-lg focus:outline-hidden focus:shadow-lg transition dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70'>
+        <div className='font-[Poppins] flex flex-col justify-between items-center text-white bg-white/10 shadow-[inset_0_1px_0_1px_rgba(255,255,255,0.2),0_4px_16px_rgba(0,0,0,0.1)]  border border-white/30 rounded-lg px-8 py-4'>
             {children}
         </div>
     )

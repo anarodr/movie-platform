@@ -11,7 +11,7 @@ export default function DeleteMovieModal({
 }: DeleteMovieModalProps) {
     return (
         <div
-            className='relative z-10'
+            className='relative z-15'
             aria-labelledby='modal-title'
             role='dialog'
             aria-modal='true'>
@@ -58,7 +58,7 @@ export default function DeleteMovieModal({
                         </div>
                         <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse gap-1 sm:px-6'>
                             <Button.Danger onClick={removeMovieHandler}>Delete</Button.Danger>
-                            <Button.Secondary onClick={openDialogHandler}>Cancel</Button.Secondary>
+                            <Button.Inverted onClick={openDialogHandler}>Cancel</Button.Inverted>
                         </div>
                     </div>
                 </div>

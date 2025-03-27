@@ -41,7 +41,7 @@ export default function EditMovie() {
     }
 
     return (
-        <>
+        <div className='px-3 py-5'>
             <Button.Secondary>
                 <Link to='/movies'>
                     <span>{'< '}</span>
@@ -50,6 +50,6 @@ export default function EditMovie() {
             </Button.Secondary>
             {loading && <Loader />}
             <MovieForm submitHandler={onSubmitMovie} initialValues={data} />
-        </>
+        </div>
     )
 }

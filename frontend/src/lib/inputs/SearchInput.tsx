@@ -40,7 +40,7 @@ export default function SearchInput({
 
     return (
         <div className='flex rounded-lg'>
-            <span className='px-4 inline-flex items-center min-w-fit rounded-s-md border border-e-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-400'>
+            <span className='px-4 inline-flex items-center min-w-fit rounded-s-md border border-e-0 text-sm  bg-neutral-700 border-neutral-700 text-neutral-400'>
                 {label}
             </span>
             <input
@@ -48,7 +48,9 @@ export default function SearchInput({
                 value={search}
                 placeholder={placeholder}
                 onChange={handleSearch}
-                className='w-full rounded-e-md  outline bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-pink-500 sm:text-sm/6'
+                className='py-2 px-3 w-full rounded-e-lg bg-neutral-900 border border-neutral-700 text-neutral-400 placeholder-neutral-500 focus:ring-neutral-600 
+  [&::-webkit-inner-spin-button]:filter [&::-webkit-inner-spin-button]:invert [&::-webkit-inner-spin-button]:brightness-150
+  [&::-webkit-outer-spin-button]:filter [&::-webkit-outer-spin-button]:invert [&::-webkit-outer-spin-button]:brightness-150'
             />
         </div>
     )
